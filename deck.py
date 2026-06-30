@@ -9,7 +9,7 @@ class Shoe:
         self.__build()
     
     #Builds a new shoe of cards
-    def build(self):
+    def __build(self):
         for _ in range(8):
             for suit in suits:
                 for rank in ranks:
