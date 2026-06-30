@@ -21,4 +21,16 @@ class Game:
                 break
             
             playing = self.__play_again
+
     #---------------------------------------------------------------
+
+    #Setup
+
+    def __welcome(self):
+        print("\nWelcome to Python Blackjack!")
+        print("I assume you already know how to play or else you shouldn't be gambling.")
+        print("Beat the dealer to 21 without going over.")
+        print("Blackjack pays 3:2 | Dealer stands on 17 | 8 decks in shoe | Choose where to cut shoe (Between 52 and 416)")
+        print("Player starts with 100 chips | Minimum bet is 5")
+        print("Type p to play or e to exit")
+    
