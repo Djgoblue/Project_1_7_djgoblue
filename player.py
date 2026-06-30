@@ -29,7 +29,27 @@ class Player:
         else:
             #Dealer's first card is revealed, second card is hidden
             return [self.__hand[0], ("Hidden", "Card")]
-
+    
+    #Calculates the total value of the player's hand
+    def get_hand_value(self):
+        total = 0
+        aces = 0
+        for card in self.__hand:
+            rank, suit = card
+            if rank in ['Jack', 'Queen', 'King']:
+                total += 10
+            elif rank == 'Ace':
+                total += 11
+                aces += 1
+            else:
+                total += int(rank)
+        
+        #If total is over 21, change value of aces from 11 to 1
+        while total > 21 and aces > 0:
+            total -= 10
+            aces -= 1
+        return total
+    
     #-------------------------------------
     
     #Balance methods
