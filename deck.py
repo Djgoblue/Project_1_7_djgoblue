@@ -21,7 +21,7 @@ class Shoe:
         return self.__shoe.pop
     
     #Set cut card
-    def set_cut_card(self, cut):
+    def set_cut_card(self):
         while True:
             cut = input().strip()
             if cut == "":
