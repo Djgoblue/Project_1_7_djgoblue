@@ -22,3 +22,12 @@ class Dealer(Player):
             print("Dealer busts! You win!")
         else:
             print(f"Dealer stands at {self.get_hand()}")
+
+    def partial_hand(self):
+        #Dealer's first card is revealed, second card is hidden
+        return self.show_hand(reveal_all=False)
+    
+    #Show dealer's hand
+    def __str__(self):
+        return f"Dealer's hand: {self.show_hand(reveal_all=True)} Value: {self.get_hand_value()}"
+    
