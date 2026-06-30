@@ -11,17 +11,17 @@ class Dealer(Player):
     
     def dealer_draw(self, shoe):
         #17 is the stand condition, keep drawing until condition is met
-        while self.get_hand() < 17:
+        while self.get_hand_value() < 17:
             new_card = shoe.draw()
             self.draw(new_card)
             rank, suit = new_card
             print(f"Dealer draws: {rank} of {suit}")
-            print(f"Dealer's total: {self.get_hand()}")
+            print(f"Dealer's total: {self.get_hand_value()}")
         #Dealer busts at over 21, otherwise dealer stands
         if self.is_bust():
             print("Dealer busts! You win!")
         else:
-            print(f"Dealer stands at {self.get_hand()}")
+            print(f"Dealer stands at {self.get_hand_value()}")
 
     def partial_hand(self):
         #Dealer's first card is revealed, second card is hidden
