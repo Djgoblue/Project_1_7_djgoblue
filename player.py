@@ -7,6 +7,8 @@ class Player:
     #Returns player's name
     def get_name(self):
         return self._name
+
+    #-------------------------------------
         
     #Hand methods
 
@@ -65,6 +67,7 @@ class Player:
     #Subtract from player's balance
     def subtract_balance(self, amount):
         self.__balance -= amount
+
     #-------------------------------------
 
     #Defines over 21 as bust condition
