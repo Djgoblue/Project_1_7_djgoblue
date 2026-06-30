@@ -6,7 +6,7 @@ class Player:
     
     #Returns player's name
     def get_name(self):
-        return self.__name
+        return self._name
         
     #Hand methods
 
@@ -69,4 +69,8 @@ class Player:
 
     #Defines over 21 as bust condition
     def is_bust(self):
-        return self.get_hand() > 21
+        return self._get_hand() > 21
+    
+    #Show player's hand
+    def __str__(self):
+        return f"{self.__name}'s hand: {self.__hand()} Value: {self.get_hand_value()}"
