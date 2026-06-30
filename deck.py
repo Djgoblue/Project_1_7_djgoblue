@@ -28,11 +28,11 @@ class Shoe:
                 self.__cut_card_depth = r.randint(52, 364)
                 break
             if not cut.isdigit():
-                print("Please enter a whole number.")
+                print("\nPlease enter a whole number.")
                 continue
             cut = int(cut)
             if cut < 52 or cut > 364:
-                print("Cut card depth must be between 52 and 364")
+                print("\nCut card depth must be between 52 and 364")
                 continue
             self.__cut_card_depth = cut
             break
