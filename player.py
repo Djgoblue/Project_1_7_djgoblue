@@ -72,8 +72,9 @@ class Player:
 
     #Defines over 21 as bust condition
     def is_bust(self):
-        return self._get_hand() > 21
+        return self._get_hand_value() > 21
     
     #Show player's hand
     def __str__(self):
-        return f"{self.__name}'s hand: {self.__hand()} Value: {self.get_hand_value()}"
+        ranks = ", ".join(self.show_hand())
+        return f"{self.__name}'s hand: {ranks} | Value: {self.get_hand_value()}"
