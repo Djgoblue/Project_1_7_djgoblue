@@ -4,6 +4,10 @@ class Player:
         self.__balance = balance
         self.__hand = []
     
+    #Returns player's name
+    def get_name(self):
+        return self.__name
+        
     #Hand methods
 
     #Add a card to the player's hand
