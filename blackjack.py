@@ -5,23 +5,34 @@ from dealer import Dealer
 class Game:
     def __init__(self):
         self.__dealer = Dealer()
-    
+        self.__player = Player()
+        self.__balance = 100
+
     #Game Process
     def run(self):
         self.__welcome()
-        self.__setup()
-
-        #While balance is non-zero keep playing
-        playing = True
-        while playing and self.__balance() > 0:
-            self.__play()
-
-            if self.balance() <=0:
-                print("\n You're broke. Come back with more money")
+        while True:
+            choice = input.strip.lower()
+            if choice == "p":
                 break
-            
-            playing = self.__play_again
+            elif choice == "e":
+                exit()
+            else:
+                print("\nInvalid choice. Type p to play or e to exit")
+        
+        # self.__setup()
 
+        # #While balance is non-zero keep playing
+        # playing = True
+        # while playing and self.__balance() > 0:
+        #     self.__play()
+
+        #     if self.__balance() <=0:
+        #         print("\n You're broke. Come back with more money")
+        #         break
+            
+        #     playing = self.__play_again
+        
     #---------------------------------------------------------------
 
     #Setup
@@ -34,3 +45,12 @@ class Game:
         print("Player starts with 100 chips | Minimum bet is 5")
         print("Type p to play or e to exit")
     
+        
+    # def __setup(self):
+    #     print()
+    
+
+#Run the game
+if __name__ == "__main__":
+    blackjack = Game()
+    blackjack.run()
