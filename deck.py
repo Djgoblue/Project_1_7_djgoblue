@@ -18,7 +18,7 @@ class Shoe:
     
     #Draw card
     def draw(self):
-        return self.__shoe.pop
+        return self.__shoe.pop()
     
     #Set cut card
     def set_cut_card(self):
