@@ -6,7 +6,7 @@ class Player:
     
     #Returns player's name
     def get_name(self):
-        return self._name
+        return self.__name
 
     #-------------------------------------
         
