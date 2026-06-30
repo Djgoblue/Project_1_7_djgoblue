@@ -36,4 +36,6 @@ class Player:
     def subtract_balance(self, amount):
         self.__balance -= amount
 
-    
+    #Defines over 21 as bust condition
+    def is_bust(self):
+        return self.get_hand() > 21
