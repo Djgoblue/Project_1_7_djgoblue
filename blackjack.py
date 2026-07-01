@@ -30,7 +30,7 @@ class Game:
             if self.__player.get_balance() <5:
                 print("\n You're broke. Come back with more money.")
                 break          
-            playing = self.__play_again
+            playing = self.__play_again()
         
     #---------------------------------------------------------------
 
@@ -73,15 +73,13 @@ class Game:
         self.__player.clear()
         self.__dealer.clear()
         for _ in range(2):
-            self.__player.draw
-            for _ in range(2):
-                self.__player.draw(self.__shoe.draw())
-                self.__dealer.draw(self.__shoe.draw())
+            self.__player.draw(self.__shoe.draw())
+            self.__dealer.draw(self.__shoe.draw())
 
         #Show initial hands
-        print(f"Player shows: {self.__player}")
+        print(f"\n{self.__player.get_name()} shows: {self.__player}")
         dealer_hand = self.__dealer.show_hand(reveal_all=False)
-        print(f"Player shows: {dealer_hand[0]} | {dealer_hand[1]}")
+        print(f"Dealer shows: {dealer_hand[0]} | {dealer_hand[1]}")
 
         #Check for player blackjack
         if self.__player.get_hand_value() == 21:
@@ -106,7 +104,7 @@ class Game:
     #Player turn
     def __player_turn(self):
         while True:
-            print("\n Do you want to Hit or Stand?")
+            print("\nDo you want to Hit or Stand?")
             print("Type h to hit or s to stand.")
             move = input().strip().lower()
             if move == "h":
@@ -126,17 +124,17 @@ class Game:
     #Betting stage
     def __collect_bet(self):
         while True:
-            print(f"Place your bet. Balance: ${self.__player.get_balance()}")
+            print(f"\nPlace your bet. Balance: ${self.__player.get_balance()}")
             amount = input().strip()
             if not amount.isdigit():
-                print("Please enter a whole number.")
+                print("\nPlease enter a whole number.")
                 continue
             bet = int(amount)
             #Minimum bet is $5
             if bet < 5:
-                print("Minimum bet is $5")
+                print("\nMinimum bet is $5")
             elif bet > self.__player.get_balance():
-                print("You don't have the money to bet that amount!")
+                print("\nYou don't have the money to bet that amount!")
             else:
                 return bet
     
