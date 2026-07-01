@@ -30,7 +30,7 @@ class Game:
             if self.__player.get_balance() <5:
                 print("\n You're broke. Come back with more money")
                 break          
-            # playing = self.__play_again
+            playing = self.__play_again
         
     #---------------------------------------------------------------
 
@@ -103,7 +103,27 @@ class Game:
         #Resolve round
         self.__resolve(bet)
 
+    #---------------------------------------------------------------
     
+    #Player turn
+    def __player_turn(self):
+        while True:
+            print("\n Do you want to Hit or Stand?")
+            print("Type h to hit or s to stand")
+            move = input().strip().lower()
+            if move == "h":
+                self.__player.draw(self.__shoe.draw())
+                print(self.__player)
+                if self.__player.is_bust():
+                    return True
+                if self.__player.get_hand_value() == 21:
+                    print("Blackjack!")
+                    return False
+            elif move == "s":
+                print(f"You stand at {self.__player.get_hand_value()}.")
+                return False
+            else:
+                print("Invalid response. Type h to hit or s to stand")
             
 
 #Run the game
