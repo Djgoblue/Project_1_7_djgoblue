@@ -18,7 +18,7 @@ class Game:
             elif choice == "e":
                 exit()
             else:
-                print("\nInvalid choice. Type p to play or e to exit")
+                print("\nInvalid choice. Type p to play or e to exit.")
         
         self.__setup()
         self.__shoe.set_cut_card()
@@ -28,7 +28,7 @@ class Game:
         while playing and self.__player.get_balance() >= 5:
             self.__play()
             if self.__player.get_balance() <5:
-                print("\n You're broke. Come back with more money")
+                print("\n You're broke. Come back with more money.")
                 break          
             playing = self.__play_again
         
@@ -42,7 +42,7 @@ class Game:
         print("Beat the dealer to 21 without going over.")
         print("\nBlackjack pays 3:2 | Dealer stands on 17 | 8 decks in shoe | Choose where to cut shoe (Between 52 and 364)")
         print("Player starts with 100 chips | Minimum bet is 5")
-        print("\nType p to play or e to exit")
+        print("\nType p to play or e to exit.")
     
         
     def __setup(self):
@@ -86,7 +86,7 @@ class Game:
         print(f"Player shows: {dealer_hand[0]} | {dealer_hand[1]}")
 
         #Check for player blackjack
-        if self.__player.get_hand_value() ==21:
+        if self.__player.get_hand_value() == 21:
             print("\nBlackjack!")
             self.__resolve(bet, player_blackjack=True)
             return
@@ -109,7 +109,7 @@ class Game:
     def __player_turn(self):
         while True:
             print("\n Do you want to Hit or Stand?")
-            print("Type h to hit or s to stand")
+            print("Type h to hit or s to stand.")
             move = input().strip().lower()
             if move == "h":
                 self.__player.draw(self.__shoe.draw())
@@ -123,7 +123,7 @@ class Game:
                 print(f"You stand at {self.__player.get_hand_value()}.")
                 return False
             else:
-                print("Invalid response. Type h to hit or s to stand")
+                print("Type h to hit or s to stand.")
             
     #Betting stage
     def __collect_bet(self):
@@ -148,7 +148,6 @@ class Game:
         dealer_total = self.__dealer.get_hand_value()
         print(self.__player)
         print(self.__dealer)
- 
         if player_blackjack:
             winnings = int(bet * 1.5)
             self.__player.add_balance(winnings)
@@ -161,6 +160,19 @@ class Game:
             print(f"You lose ${bet}. Balance: ${self.__player.get_balance()}")
         elif player_total == dealer_total:
             print(f"Push! You and the dealer both have {player_total}. Balance: ${self.__player.get_balance()}")
+
+    #Play again prompt
+    def __play_again(self):
+        while True:
+            print("\nPlay again? Type y for yes and n for no.")
+            choice = input().strip().lower()
+            if choice == "y":
+                return True
+            elif choice == "n":
+                return False
+            else:
+                print("\nType y for yes and n for no.")
+
 
 #Run the game
 if __name__ == "__main__":
