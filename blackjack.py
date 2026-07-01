@@ -80,7 +80,17 @@ class Game:
                 self.__player.draw(self.__shoe.draw())
                 self.__dealer.draw(self.__shoe.draw())
 
-                
+        #Show initial hands
+        print(f"Player shows: {self.__player}")
+        dealer_hand = self.__dealer.show_hand(reveal_all=False)
+        print(f"Player shows: {dealer_hand[0]} | {dealer_hand[1]}")
+
+        #Check for player blackjack
+        if self.__player.get_hand_value() ==21:
+            print("\nBlackjack!")
+            self.__resolve(bet, player_blackjack=True)
+            return
+        
             
 
 #Run the game
