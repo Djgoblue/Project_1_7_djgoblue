@@ -142,6 +142,25 @@ class Game:
             else:
                 return bet
     
+    #Resolution stage
+    def __resolve(self, bet, player_blackjack=False):
+        player_total = self.__player.get_hand_value()
+        dealer_total = self.__dealer.get_hand_value()
+        print(self.__player)
+        print(self.__dealer)
+ 
+        if player_blackjack:
+            winnings = int(bet * 1.5)
+            self.__player.add_balance(winnings)
+            print(f"Blackjack! You win ${winnings}! Balance: ${self.__player.get_balance()}")
+        elif self.__dealer.is_bust() or player_total > dealer_total:
+            self.__player.add_balance(bet)
+            print(f"You win ${bet}! Balance: ${self.__player.get_balance()}")
+        elif player_total < dealer_total:
+            self.__player.subtract_balance(bet)
+            print(f"You lose ${bet}. Balance: ${self.__player.get_balance()}")
+        elif player_total == dealer_total:
+            print(f"Push! You and the dealer both have {player_total}. Balance: ${self.__player.get_balance()}")
 
 #Run the game
 if __name__ == "__main__":
