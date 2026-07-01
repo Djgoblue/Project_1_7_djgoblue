@@ -27,10 +27,10 @@ class Player:
     #Decides which cards to reveal
     def show_hand(self, reveal_all = True):
         if reveal_all:
-            return self.__hand
+            return [rank for rank, suit in self.__hand]  # rank only
         else:
-            #Dealer's first card is revealed, second card is hidden
-            return [self.__hand[0], ("Hidden", "Card")]
+            rank, suit = self.__hand[0]
+            return [rank, "Hidden"]
     
     #Calculates the total value of the player's hand
     def get_hand_value(self):
