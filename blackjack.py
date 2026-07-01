@@ -118,7 +118,7 @@ class Game:
                     print("Blackjack!\n")
                     return False
             elif move == "s":
-                print(f"You stand at {self.__player.get_hand_value()}.")
+                print(f"You stand at {self.__player.get_hand_value()}.\n")
                 return False
             else:
                 print("Type h to hit or s to stand.")
