@@ -6,7 +6,6 @@ import random as r
 class Game:
     def __init__(self):
         self.__dealer = Dealer()
-        self.__balance = 100
         self.__shoe = Shoe()
 
     #Game Process
@@ -24,16 +23,14 @@ class Game:
         self.__setup()
         self.__shoe.set_cut_card()
 
-        # #While balance is non-zero keep playing
-        # playing = True
-        # while playing and self.__balance() > 0:
-        #     self.__play()
-
-        #     if self.__balance() <=0:
-        #         print("\n You're broke. Come back with more money")
-        #         break
-            
-        #     playing = self.__play_again
+        #While balance is greater than minimum bet keep playing
+        playing = True
+        while playing and self.__player.get_balance() >= 5:
+            self.__play()
+            if self.__player.get_balance() <5:
+                print("\n You're broke. Come back with more money")
+                break          
+            # playing = self.__play_again
         
     #---------------------------------------------------------------
 
@@ -58,9 +55,32 @@ class Game:
         print(f"\nWelcome, {self.__player.get_name()}!")
         print("Choose where to place the cut card. (Between 52 and 364)")
 
-        
+    #---------------------------------------------------------------    
 
-            
+    #Play round
+
+    def __play(self):
+        print(f" Your chips: {self.__player.get_balance()}")
+
+        #Shuffle if cut card reached
+        if self.__shoecut_card_reached():
+            print("\n Cut card reached - reshuffling...")
+            self.__shoe = Shoe()
+            self.__shoe.set_cut_card()
+    
+        #Betting stage
+        bet = self.__collect_bet()
+
+        #Deal intial two cards
+        self.__player.clear()
+        self.__dealer.clear()
+        for _ in range(2):
+            self.__player.draw
+            for _ in range(2):
+                self.__player.draw(self.__shoe.draw())
+                self.__dealer.draw(self.__shoe.draw())
+
+                
             
 
 #Run the game
