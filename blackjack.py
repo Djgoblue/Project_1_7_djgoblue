@@ -60,10 +60,8 @@ class Game:
     #Play round
 
     def __play(self):
-        print(f" Your chips: {self.__player.get_balance()}")
-
         #Shuffle if cut card reached
-        if self.__shoecut_card_reached():
+        if self.__shoe.cut_card_reached():
             print("\n Cut card reached - reshuffling...")
             self.__shoe = Shoe()
             self.__shoe.set_cut_card()
