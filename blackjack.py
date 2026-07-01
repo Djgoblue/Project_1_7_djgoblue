@@ -125,6 +125,23 @@ class Game:
             else:
                 print("Invalid response. Type h to hit or s to stand")
             
+    #Betting stage
+    def __collect_bet(self):
+        while True:
+            print(f"Place your bet. Balance: ${self.__player.get_balance()}")
+            amount = input().strip()
+            if not amount.isdigit():
+                print("Please enter a whole number.")
+                continue
+            bet = int(amount)
+            #Minimum bet is $5
+            if bet < 5:
+                print("Minimum bet is $5")
+            elif bet > self.__player.get_balance():
+                print("You don't have the money to bet that amount!")
+            else:
+                return bet
+    
 
 #Run the game
 if __name__ == "__main__":
