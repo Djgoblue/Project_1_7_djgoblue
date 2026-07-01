@@ -91,6 +91,19 @@ class Game:
             self.__resolve(bet, player_blackjack=True)
             return
         
+        #Player turn
+        if self.__player_turn():
+            self.__player.subtract_balance(bet)
+            print(f"\n Bust! You lose ${bet}. Balance: ${self.__player.get_balance()}")
+            return
+
+        #Dealer turn
+        self.__dealer.dealer_draw(self.__shoe)
+        
+        #Resolve round
+        self.__resolve(bet)
+
+    
             
 
 #Run the game
