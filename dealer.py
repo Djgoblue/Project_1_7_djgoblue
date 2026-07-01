@@ -29,5 +29,6 @@ class Dealer(Player):
     
     #Show dealer's hand
     def __str__(self):
-        return f"Dealer's hand: {self.show_hand(reveal_all=True)} Value: {self.get_hand_value()}"
+        ranks = ", ".join(self.show_hand(reveal_all=True))
+        return f"Dealer's hand: {ranks} | Value: {self.get_hand_value()}"
     
