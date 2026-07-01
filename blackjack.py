@@ -28,7 +28,7 @@ class Game:
         while playing and self.__player.get_balance() >= 5:
             self.__play()
             if self.__player.get_balance() <5:
-                print("\n You're broke. Come back with more money.")
+                print("\n The casino always wins. Come back with more money.")
                 break          
             playing = self.__play_again()
         
@@ -110,10 +110,12 @@ class Game:
             if move == "h":
                 self.__player.draw(self.__shoe.draw())
                 print(self.__player)
+                dealer_hand = self.__dealer.show_hand(reveal_all=False)
+                print(f"Dealer shows: {dealer_hand[0]} | {dealer_hand[1]}")
                 if self.__player.is_bust():
                     return True
                 if self.__player.get_hand_value() == 21:
-                    print("Blackjack!")
+                    print("Blackjack!\n")
                     return False
             elif move == "s":
                 print(f"You stand at {self.__player.get_hand_value()}.")
@@ -147,15 +149,15 @@ class Game:
         if player_blackjack:
             winnings = int(bet * 1.5)
             self.__player.add_balance(winnings)
-            print(f"Blackjack! You win ${winnings}! Balance: ${self.__player.get_balance()}")
+            print(f"Blackjack! You win ${winnings}! Balance: ${self.__player.get_balance()}\n")
         elif self.__dealer.is_bust() or player_total > dealer_total:
             self.__player.add_balance(bet)
-            print(f"You win ${bet}! Balance: ${self.__player.get_balance()}")
+            print(f"You win ${bet}! Balance: ${self.__player.get_balance()}\n")
         elif player_total < dealer_total:
             self.__player.subtract_balance(bet)
-            print(f"You lose ${bet}. Balance: ${self.__player.get_balance()}")
+            print(f"You lose ${bet}. Balance: ${self.__player.get_balance()}\n")
         elif player_total == dealer_total:
-            print(f"Push! You and the dealer both have {player_total}. Balance: ${self.__player.get_balance()}")
+            print(f"Push! You and the dealer both have {player_total}. Balance: ${self.__player.get_balance()}\n")
 
     #Play again prompt
     def __play_again(self):
