@@ -16,7 +16,7 @@ class Dealer(Player):
             self.draw(new_card)
             rank, suit = new_card
             print(f"Dealer draws: {rank}")
-            print(f"Dealer's total: {self.get_hand_value()}")
+            print(f"Dealer's total: {self.get_hand_value()}\n")
         #Dealer busts at over 21, otherwise dealer stands
         if self.is_bust():
             print("Dealer busts! You win!")
